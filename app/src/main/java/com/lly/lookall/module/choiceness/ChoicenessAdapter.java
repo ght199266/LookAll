@@ -1,5 +1,6 @@
-package com.lly.lookall.module;
+package com.lly.lookall.module.choiceness;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,12 +11,13 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.lly.lookall.R;
 import com.lly.lookall.entity.ChicenessEntity;
+import com.lly.lookall.params.BundleKey;
 
 import java.util.List;
 
 /**
  * ChoicenessAdapter[v 1.0.0]
- * classes:com.lly.lookall.module.ChoicenessAdapter
+ * classes:com.lly.lookall.module.choiceness.ChoicenessAdapter
  *
  * @author lileiyi
  * @date 2016/5/3
@@ -43,6 +45,7 @@ public class ChoicenessAdapter extends RecyclerView.Adapter<ChoicenessAdapter.Vi
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
         viewHolder.tv_title.setText(mList.get(position).getTitle());
         viewHolder.img_pic.setImageURI(Uri.parse(mList.get(position).getFirstImg()));
+        viewHolder.position = position;
     }
 
     //获取数据的数量
@@ -52,14 +55,24 @@ public class ChoicenessAdapter extends RecyclerView.Adapter<ChoicenessAdapter.Vi
     }
 
     //自定义的ViewHolder，持有每个Item的的所有界面元素
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         public SimpleDraweeView img_pic;
         private TextView tv_title;
+        private int position;
 
         public ViewHolder(View view) {
             super(view);
             img_pic = (SimpleDraweeView) view.findViewById(R.id.img_pic);
             tv_title = (TextView) view.findViewById(R.id.tv_title);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent();
+                    intent.putExtra(BundleKey.URL, mList.get(position).getUrl());
+                    intent.setClass(v.getContext(), WebViewActivity.class);
+                    v.getContext().startActivity(intent);
+                }
+            });
         }
     }
 }

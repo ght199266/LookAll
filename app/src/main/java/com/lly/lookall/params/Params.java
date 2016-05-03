@@ -13,4 +13,5 @@ public class Params {
 
     public static final String URL = "http://v.juhe.cn/weixin/query";
     public static final String KEY = "c86671c08c4eb69794d3747d697687c9";
+
 }

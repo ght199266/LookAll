@@ -47,6 +47,7 @@ public class ViewPagerFragmentManage extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_fragmentmanage_layout, container, false);
         mTablayout = (TabLayout) view.findViewById(R.id.tab_layout);
         mViewpager = (ViewPager) view.findViewById(R.id.vp_viewpage_fragment);
+        mViewpager.setOffscreenPageLimit(2);
         return view;
     }
 

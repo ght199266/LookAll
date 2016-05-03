@@ -12,4 +12,6 @@ package com.lly.lookall.params;
 public class BundleKey {
 
     public static final String KEY_TAB = "key_tab";
+
+    public static final String URL = "url";
 }
