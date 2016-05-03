@@ -31,22 +31,30 @@ public class WebViewActivity extends BaseActivity {
         Intent intent = getIntent();
         if (intent.hasExtra(BundleKey.URL)) {
             url = intent.getStringExtra(BundleKey.URL);
-        } else {
-            showToast("URL is null");
         }
         initView();
+        setWebView();
+    }
+
+    /**
+     * 设置webView相关属性
+     */
+    private void setWebView() {
         //设置WebView属性，能够执行Javascript脚本
         mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.loadUrl(url);
-    }
-
-    private void initView() {
-        mWebView = (WebView) findViewById(R.id.webview);
         mWebView.setWebViewClient(new WebViewClient() {
             public boolean shouldOverrideUrlLoading(WebView view, String url) { //  重写此方法表明点击网页里面的链接还是在当前的webview里跳转，不跳到浏览器那边
                 view.loadUrl(url);
                 return true;
             }
         });
+    }
+
+    /**
+     * 初始化View
+     */
+    private void initView() {
+        mWebView = (WebView) findViewById(R.id.webview);
     }
 }

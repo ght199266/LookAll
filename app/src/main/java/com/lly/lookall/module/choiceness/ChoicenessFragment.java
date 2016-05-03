@@ -15,6 +15,7 @@ import com.lly.lookall.home.BaseFragment;
 import com.lly.lookall.http.ChoicenessCallback;
 import com.lly.lookall.http.HttpRequestUtils;
 import com.lly.lookall.params.Params;
+import com.lly.lookall.view.CircleProgress;
 import com.lly.lookall.view.DividerItemDecoration;
 
 import java.util.ArrayList;
@@ -35,10 +36,10 @@ public class ChoicenessFragment extends BaseFragment {
 
     private XRecyclerView mXRecyclerView;
     private ChoicenessAdapter mChoicenessAdapter;
+    private CircleProgress circle_progress;
     private int no = 1;
     private int ps = 20;
     private List<ChicenessEntity.ResultEntity.ListEntity> mlist;
-
     private boolean isLoadmore;
 
     @Nullable
@@ -51,9 +52,16 @@ public class ChoicenessFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mXRecyclerView = (XRecyclerView) view.findViewById(R.id.xrecyclerview);
+        circle_progress = (CircleProgress) view.findViewById(R.id.circle_progress);
+        circle_progress.startAnim();
 //        mXRecyclerView.setLoadingMoreEnabled(false);
         setListener();
-        getData();
+        circle_progress.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                getData();
+            }
+        }, 1500);
     }
 
     private void setListener() {
@@ -94,6 +102,10 @@ public class ChoicenessFragment extends BaseFragment {
     }
 
     private void setAdapter(List<ChicenessEntity.ResultEntity.ListEntity> list) {
+//        circle_progress.stopAnim();
+        circle_progress.reset();
+        circle_progress.setVisibility(View.GONE);
+        mXRecyclerView.setVisibility(View.VISIBLE);
         if (mChoicenessAdapter == null) {
             mlist = new ArrayList<>();
             mlist.addAll(list);
@@ -110,7 +122,6 @@ public class ChoicenessFragment extends BaseFragment {
             mlist.addAll(list);
             mChoicenessAdapter.notifyDataSetChanged();
         }
-        showToast("刷新完成");
         mXRecyclerView.refreshComplete();
         if (isLoadmore) {
             mXRecyclerView.loadMoreComplete();

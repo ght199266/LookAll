@@ -7,6 +7,6 @@
     <color name="tabBackGround">#0077d9</color>
     <color name="tabselectColor">#66ade8</color>
     <color name="white">#fafafa</color>
-
+    <color name="gray1">#ececec</color>
     <color name="line_gray_color">#f8f8f8</color>
 </resources>
