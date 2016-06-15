@@ -5,8 +5,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.lly.lookall.entity.TabBean;
+import com.lly.lookall.module.picture.PhotoFragment;
 import com.lly.lookall.module.choiceness.ChoicenessFragment;
-import com.lly.lookall.module.Fragment3;
 import com.lly.lookall.module.joke.JokeFragment;
 
 import java.util.List;
@@ -43,8 +43,8 @@ public class ViewpagerAdapter extends FragmentPagerAdapter {
                 baseFragment = jokeFragment;
                 break;
             case 3:
-                Fragment3 fragment3 = new Fragment3();
-                baseFragment = fragment3;
+                PhotoFragment photoFragment = new PhotoFragment();
+                baseFragment = photoFragment;
                 break;
         }
         return baseFragment;

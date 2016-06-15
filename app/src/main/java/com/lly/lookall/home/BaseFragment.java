@@ -17,7 +17,7 @@ import android.widget.Toast;
  * @time 13:24
  * @description
  */
-public class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -28,4 +28,5 @@ public class BaseFragment extends Fragment {
         Toast.makeText(getActivity(), str, Toast.LENGTH_SHORT).show();
 
     }
+
 }

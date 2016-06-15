@@ -11,7 +11,6 @@ import java.util.ArrayList;
 
 public class MainActivity extends BaseActivity {
 
-
     private ArrayList<TabBean> mTabBeen = new ArrayList<>();
 
     @Override
