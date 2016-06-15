@@ -24,6 +24,18 @@ public class HttpRequestUtils {
         OkHttpUtils.get().url(Params.URL).addParams("pno", String.valueOf(pno))
                 .addParams("ps", String.valueOf(ps)).addParams("key", key).addParams("dtype", "json").build().execute(chicenessCallback);
     }
+
+
+    /**
+     * pno	int	否	当前页数，默认1
+     * ps	int	否	每页返回条数，最大100，默认20
+     * key	string	是	应用APPKEY(应用详细页查询)
+     * dtype	string	否	返回数据的格式,xml或json，默认json
+     */
+    public static void getJokeList(int page, int pagesize, String key, JokeCallback jokeCallback ) {
+        OkHttpUtils.get().url(Params.JOKEURL).addParams("page", String.valueOf(page))
+                .addParams("pagesize", String.valueOf(pagesize)).addParams("key", key).build().execute(jokeCallback);
+    }
 }
 
 

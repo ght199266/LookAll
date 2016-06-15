@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import com.lly.lookall.entity.TabBean;
 import com.lly.lookall.module.choiceness.ChoicenessFragment;
 import com.lly.lookall.module.Fragment3;
-import com.lly.lookall.module.JokeFragment;
+import com.lly.lookall.module.joke.JokeFragment;
 
 import java.util.List;
 

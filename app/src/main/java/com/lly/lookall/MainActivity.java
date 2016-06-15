@@ -2,7 +2,6 @@ package com.lly.lookall;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 
 import com.lly.lookall.entity.TabBean;
 import com.lly.lookall.home.ViewPagerFragmentManage;
@@ -12,13 +11,13 @@ import java.util.ArrayList;
 
 public class MainActivity extends BaseActivity {
 
+
     private ArrayList<TabBean> mTabBeen = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.v("leizi", "测试提交");
         initData();
         initFragment();
     }

@@ -1,6 +1,7 @@
 package com.lly.lookall;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 
@@ -14,9 +15,19 @@ import com.facebook.drawee.backends.pipeline.Fresco;
  * @description
  */
 public class MyApplication extends Application {
+
+    public static Context mContext;
+
     @Override
     public void onCreate() {
         super.onCreate();
+        mContext = this;
         Fresco.initialize(getApplicationContext());
     }
+
+
+    public static Context getAppContext(){
+        return mContext;
+    }
+
 }
